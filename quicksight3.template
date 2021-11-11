@@ -1,0 +1,112 @@
+AWSTemplateFormatVersion: 2010-09-09
+Metadata:
+  'AWS::CloudFormation::Designer':
+    c4fe7a28-25c0-4103-9ed9-89c774a89cfa:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 700
+        'y': 340
+      z: 0
+      embeds: []
+    5f0c3c8c-0446-43d8-a0c8-034044edc794:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 515.6268184504411
+        'y': 340.7106165165469
+      z: 0
+      embeds: []
+      dependson:
+        - c4fe7a28-25c0-4103-9ed9-89c774a89cfa
+    8742ac4b-f8fa-408c-970d-c700adbf7f55:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 780
+        'y': 340
+      z: 0
+      embeds: []
+      dependson:
+        - c4fe7a28-25c0-4103-9ed9-89c774a89cfa
+    7d96660c-0654-4d68-88ba-c8165bda7a9e:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 920
+        'y': 390
+      z: 0
+      embeds: []
+      dependson:
+        - 8742ac4b-f8fa-408c-970d-c700adbf7f55
+        - 74d5e20b-15da-44d9-967e-185c7aa5b52d
+    64cc47bd-5dde-4b6e-86ac-f7df24efdc8a:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 980
+        'y': 490
+      z: 0
+      embeds: []
+    74d5e20b-15da-44d9-967e-185c7aa5b52d:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 720
+        'y': 470
+      z: 0
+      embeds: []
+      dependson:
+        - 64cc47bd-5dde-4b6e-86ac-f7df24efdc8a
+Resources:
+  KFDS2CEL0:
+    Type: 'AWS::KinesisFirehose::DeliveryStream'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: c4fe7a28-25c0-4103-9ed9-89c774a89cfa
+  CWMS58LHV:
+    Type: 'AWS::CloudWatch::MetricStream'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 5f0c3c8c-0446-43d8-a0c8-034044edc794
+    DependsOn:
+      - KFDS2CEL0
+  LF1UVG:
+    Type: 'AWS::Lambda::Function'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 8742ac4b-f8fa-408c-970d-c700adbf7f55
+    DependsOn:
+      - KFDS2CEL0
+  DDBT1ECYL:
+    Type: 'AWS::DynamoDB::Table'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 7d96660c-0654-4d68-88ba-c8165bda7a9e
+    DependsOn:
+      - LF1UVG
+      - ADC16UB0
+  QSD3WFPI:
+    Type: 'AWS::QuickSight::Dashboard'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 64cc47bd-5dde-4b6e-86ac-f7df24efdc8a
+  ADC16UB0:
+    Type: 'AWS::Athena::DataCatalog'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 74d5e20b-15da-44d9-967e-185c7aa5b52d
+    DependsOn:
+      - QSD3WFPI
